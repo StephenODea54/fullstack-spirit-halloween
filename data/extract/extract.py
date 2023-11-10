@@ -37,11 +37,11 @@ def get_html(zip_code: int) -> List[str]:
 # Data that represents row in the DB
 @dataclass
 class Data:
-    address: str = field(init = False)
-    city: str = field(init = False)
-    state: str = field(init = False)
-    zip: int = field(init = False)
-    former_business: str = field(init = False)
+    address: str = None
+    city: str = None
+    state: str = None
+    zip: int = None
+    former_business: str = None
 
 
 # Builder Class to contruct the rows for the data
