@@ -45,6 +45,7 @@ class Data:
 
 
 # Builder Class to contruct the rows for the data
+# Builder Class to contruct the rows for the data
 class DataframeBuilder:
     def __init__(self, html: str) -> None:
         self.data = Data()
@@ -54,23 +55,32 @@ class DataframeBuilder:
         address_div = self.soup.find('div', {'class': 'address'})
         address_div_children = address_div.findChildren('div', recursive = False)
 
-        address_line_one = address_div_children[1].text
-        address_line_two = address_div_children[2].text
+        # Represents the street address e.g. 1234 Something Ave
+        street_address = address_div_children[1].text
 
-        self.data.address = address_line_one
-        self.data.city = address_line_two.split(' ')[0][:-1]
-        self.data.state = address_line_two.split(' ')[1]
-        self.data.zip = int(address_line_two.split(' ')[2])
+        # Represents the City
+        city = address_div_children[2].text.split(', ')[0]
+
+        # Represents the State and Zip part of the address
+        state_zip_arr = address_div_children[2].text.split(', ')[-1].split(' ')
+
+        # Excluding Canadian address from analysis b/c I'm lazy
+        if not len(state_zip_arr) > 2:
+            self.data.address = street_address
+            self.data.city = city
+            self.data.state = state_zip_arr[0]
+            self.data.zip = int(state_zip_arr[1])
+
+        return self
 
     def get_former_business(self) -> None:
-        former_business_div = self.soup.find('div', {'class': 'address'})
-        former_business_clean = former_business_div.replace('Former ', '')
+        former_business_div = self.soup.find('div', {'class': 'address-two'})
+        former_business_clean = former_business_div.text.replace('Former ', '')
 
         self.data.former_business = former_business_clean
         return self
     
     def build(self) -> pd.DataFrame:
-        # Little ugly
         self.get_address_attributes().get_former_business()
 
         return pd.DataFrame([asdict(self.data)])
