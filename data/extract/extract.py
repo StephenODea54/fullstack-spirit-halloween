@@ -1,7 +1,7 @@
 # Modules
 from bs4 import BeautifulSoup
 from dataclasses import asdict, dataclass, field
-from typing import List
+from typing import List, Union
 import pandas as pd
 import os
 import requests
@@ -22,9 +22,13 @@ def read_zip_codes(file_path: str) -> List[int]:
 
     return df['Zip Code'].tolist()
 
-def get_html(zip_code: int) -> List[str]:
+def get_html(zip_code: int) -> Union[List[str], None]:
     request = requests.get(BASE_URL + str(zip_code))
+
+    # Not all zip codes are guaranteed to return any results from the api call
     markers = request.json()['markers']
+    if markers is None:
+        return
 
     html_arr: List[str] = []
 
@@ -44,7 +48,6 @@ class Data:
     former_business: str = None
 
 
-# Builder Class to contruct the rows for the data
 # Builder Class to contruct the rows for the data
 class DataframeBuilder:
     def __init__(self, html: str) -> None:
@@ -84,3 +87,20 @@ class DataframeBuilder:
         self.get_address_attributes().get_former_business()
 
         return pd.DataFrame([asdict(self.data)])
+
+if __name__ == '__main__':
+    dfs: List[pd.DataFrame] = []
+
+    zip_codes = read_zip_codes(os.path.join(SCRIPT_DIR, 'georef.csv'))
+
+    for zip_code in zip_codes:
+        html_arr = get_html(zip_code)
+
+        if not html_arr is None:
+            for html in html_arr:
+                dataframe_builder = DataframeBuilder(html)
+                
+                df = dataframe_builder.build()
+                dfs.append(df)
+
+    df = pd.concat(dfs).dropna().drop_duplicates().reset_index().to_csv(os.path.join(SCRIPT_DIR, '..', 'output/data.csv'))
