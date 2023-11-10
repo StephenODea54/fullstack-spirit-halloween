@@ -91,7 +91,7 @@ class DataframeBuilder:
 if __name__ == '__main__':
     dfs: List[pd.DataFrame] = []
 
-    zip_codes = read_zip_codes(os.path.join(SCRIPT_DIR, 'georef.csv'))
+    zip_codes = read_zip_codes(os.path.join(SCRIPT_DIR, '..', 'input/georef.csv'))
 
     for zip_code in zip_codes:
         html_arr = get_html(zip_code)
