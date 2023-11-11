@@ -8,6 +8,7 @@
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint --fix --ext .ts",
     "format": "prettier --write './**/*.ts' --config ./.prettierrc",
+    "prepare": "cd ../ && husky install ./api/.husky",
     "build": "tsc",
     "start": "pnpm run build && node index.js"
   },
@@ -24,5 +25,9 @@
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2"
   }
 }
