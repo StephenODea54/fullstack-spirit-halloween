@@ -25,10 +25,10 @@ export const formerBusinesses = sqliteTable('former_businesses', {
     formerBusiness: text('former_business').notNull().unique(),
 });
 
-export const locations = sqliteTable('location', {
+export const locations = sqliteTable('locations', {
     internalId: integer('internal_id').primaryKey(),
     id: text('id').notNull().unique(),
-    address: text('city').notNull().unique(),
+    address: text('address').notNull().unique(),
     cityId: integer('city_id')
         .notNull()
         .references(() => cities.internalId),
