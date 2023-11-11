@@ -10,7 +10,7 @@
     "format": "prettier --write './**/*.ts' --config ./.prettierrc",
     "prepare": "cd ../ && husky install ./api/.husky",
     "build": "tsc && tsc-alias",
-    "start": "pnpm run build && node index.js"
+    "start": "pnpm run build && node dist/index.js"
   },
   "keywords": [],
   "author": "",
