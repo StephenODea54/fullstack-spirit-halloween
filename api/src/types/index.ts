@@ -6,3 +6,9 @@ export interface Location {
     zip: number;
     formerBusiness: string;
 }
+
+export interface State {
+    id: string;
+    state: string;
+    totalLocations: number;
+}
