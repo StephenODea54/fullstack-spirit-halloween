@@ -13,35 +13,35 @@ def create_tables(engine: Engine):
 
     cities = Table(
         'cities', metadata,
-        Column('internal_id', Integer, primary_key = True, autoincrement = True),
+        Column('internal_id', Integer, primary_key = True),
         Column('id', Text, unique = True, nullable = False),
         Column('city', Text, unique = True, nullable = False)
     )
 
     states = Table(
         'states', metadata,
-        Column('internal_id', Integer, primary_key = True, autoincrement = True),
+        Column('internal_id', Integer, primary_key = True),
         Column('id', Text, unique = True, nullable = False),
         Column('state', Text, unique = True, nullable = False)
     )
 
     zip_codes = Table(
         'zip_codes', metadata,
-        Column('internal_id', Integer, primary_key = True, autoincrement = True),
+        Column('internal_id', Integer, primary_key = True),
         Column('id', Text, unique = True, nullable = False),
         Column('zip', Integer, unique = True, nullable = False)
     )
 
     former_businesses = Table(
         'former_businesses', metadata,
-        Column('internal_id', Integer, primary_key = True, autoincrement = True),
+        Column('internal_id', Integer, primary_key = True),
         Column('id', Text, unique = True, nullable = False),
         Column('former_business', Text, unique = True, nullable = False)
     )
 
     locations = Table(
         'locations', metadata,
-        Column('internal_id', Integer, primary_key = True, autoincrement = True),
+        Column('internal_id', Integer, primary_key = True),
         Column('id', Text, unique = True, nullable = False),
         Column('address', Text, unique = True, nullable = False),
         Column('city_id', Integer, ForeignKey('cities.internal_id'), nullable = False),
@@ -59,8 +59,7 @@ def insert_data(df: pd.DataFrame, table_name: str, engine: Engine) -> None:
     df.to_sql(table_name, engine, if_exists = 'replace', index = False)
 
 if __name__ == '__main__':
-    # engine = create_engine(os.path.join('sqlite:///', SCRIPT_DIR, '..', '..', 'api/src/db/database.db'))
-    engine = create_engine('sqlite:///api/src/db/database.db')
+    engine = create_engine('sqlite:///api/database.db')
     create_tables(engine)
 
     cities_df = read_output_data('cities')
