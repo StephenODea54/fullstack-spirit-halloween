@@ -1,5 +1,5 @@
 // Module Imports
-import { eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 
 // DB Imports
 import { db } from '@/db/db.js';
@@ -8,8 +8,8 @@ import * as schema from '@/db/schema.js';
 // Types
 import type { Location } from '@/types/index.js';
 
-const getLocations = async (): Promise<Location[]> => {
-    const locations = await db
+const getLocations = (): Location[] => {
+    const locations = db
         .select({
             id: schema.locations.id,
             address: schema.locations.address,
@@ -25,11 +25,21 @@ const getLocations = async (): Promise<Location[]> => {
         .leftJoin(
             schema.formerBusinesses,
             eq(schema.locations.formerBusinessId, schema.formerBusinesses.internalId),
-        );
+        )
+        .all();
 
     return locations;
 };
 
+const getTotalLocations = (): { totalLocations: number } => {
+    const result = db
+        .select({ totalLocations: sql<number>`count(*)` })
+        .from(schema.locations)
+        .all();
+    return result[0];
+};
+
 export default {
     getLocations,
+    getTotalLocations,
 };

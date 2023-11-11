@@ -6,10 +6,14 @@ import locationServices from '@/services/locationServices.js';
 
 const router = express.Router();
 
-router.get('/', async (_req, res) => {
-    const locations = await locationServices.getLocations();
-
+router.get('/', (_req, res) => {
+    const locations = locationServices.getLocations();
     res.send(locations);
+});
+
+router.get('/total', (_req, res) => {
+    const totalLocations = locationServices.getTotalLocations();
+    res.send(totalLocations);
 });
 
 export default router;
