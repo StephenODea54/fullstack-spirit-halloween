@@ -1,6 +1,6 @@
 # Modules
 from bs4 import BeautifulSoup
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from typing import List, Union
 import pandas as pd
 import os
@@ -103,4 +103,8 @@ if __name__ == '__main__':
                 df = dataframe_builder.build()
                 dfs.append(df)
 
-    df = pd.concat(dfs).dropna().drop_duplicates().reset_index().to_csv(os.path.join(SCRIPT_DIR, '..', 'output/data.csv'))
+    (pd.concat(dfs)
+       .dropna()
+       .drop_duplicates()
+       .reset_index(drop = True)
+       .to_csv(os.path.join(SCRIPT_DIR, '..', 'output/data.csv'), index = False))
