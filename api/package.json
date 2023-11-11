@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.7",
     "@types/node": "^20.9.0",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
@@ -27,6 +28,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "better-sqlite3": "^9.1.1",
+    "drizzle-orm": "^0.29.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "tsc-alias": "^1.8.8"
