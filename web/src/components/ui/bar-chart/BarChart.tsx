@@ -1,34 +1,11 @@
 // Module Imports
-import {BarChart as TremorBarChart} from '@tremor/react';
+import { BarChart as TremorBarChart, type Color, type CustomTooltipType } from '@tremor/react';
 
 // Types
-type Colors =
-    | 'blue'
-    | 'slate'
-    | 'gray'
-    | 'zinc'
-    | 'neutral'
-    | 'stone'
-    | 'red'
-    | 'orange'
-    | 'amber'
-    | 'yellow'
-    | 'lime'
-    | 'green'
-    | 'emerald'
-    | 'teal'
-    | 'cyan'
-    | 'sky'
-    | 'indigo'
-    | 'violet'
-    | 'purple'
-    | 'fuchsia'
-    | 'pink'
-    | 'rose';
-
 interface BarChartProps<T> {
     categories: string[];
-    colors?: Colors[];
+    colors?: Color[];
+    customTooltip?: React.ComponentType<CustomTooltipType>;
     data: T[];
     index: string;
     layout?: 'horizontal' | 'vertical';
@@ -38,21 +15,23 @@ interface BarChartProps<T> {
 export const BarChart = <T,>({
     categories,
     colors = ['blue'],
+    customTooltip,
     data,
     index,
-    layout = 'vertical',
+    layout = 'horizontal',
     valueFormatter,
 }: BarChartProps<T>) => {
     return (
         <TremorBarChart
-            colors={colors}
             categories={categories}
+            colors={colors}
+            customTooltip={customTooltip}
             data={data}
             index={index}
             layout={layout}
-            valueFormatter={valueFormatter}
+            showAnimation={true}
             showLegend={false}
-            showTooltip={false}
+            valueFormatter={valueFormatter}
         />
     );
 };
