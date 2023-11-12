@@ -4,13 +4,9 @@ module.exports = {
   clearMocks: true,
   coverageDirectory: "coverage",
   coveragePathIgnorePatterns: [
-    "<rootDir>/node_modules/(?!@foo)"
-  ],
-  moduleFileExtensions: [
-    "ts",
-    "tsx",
-    "js"
-  ],
+    "<rootDir>/node_modules/(?!@foo)"],
+  testPathIgnorePatterns: ['<rootDir>/dist/'],
+  moduleFileExtensions: ["ts", "js"],
   moduleNameMapper: {
     "@/index.js": "<rootDir>/src/index.ts",
     "@/app.js": "<rootDir>/src/app.ts",
@@ -23,7 +19,7 @@ module.exports = {
     "@/services/locationServices.js": "<rootDir>/src/services/locationServices.ts",
     "@/services/stateServices.js": "<rootDir>/src/services/stateServices.ts",
     "@/db/db.js": "<rootDir>/src/db/db.ts",
-    "@/db/schema.js": "<rootDir>/src/db/schema.ts"
+    "@/db/schema.js": "<rootDir>/src/db/schema.ts",
   },
   testRegex: "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   transform: {
@@ -33,6 +29,6 @@ module.exports = {
     }]
   },
   transformIgnorePatterns: [
-    "<rootDir>/node_modules/(?!@foo)"
+    "<rootDir>/node_modules/(?!@foo)",
   ]
 }
