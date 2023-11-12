@@ -27,7 +27,7 @@ const checkLength = (response: Response, length: number): void => {
 
 // Tests
 describe('Businesses Router Test Suite', () => {
-    it('Tests the /api/businesses/max route', async () => {
+    it('Ensures the /api/businesses/max route exists and is of type object', async () => {
         const response = await request(app).get('/api/businesses/max');
 
         check200StatusCode(response);
@@ -35,24 +35,28 @@ describe('Businesses Router Test Suite', () => {
         expect(Array.isArray(response.body)).toBe(false);
     });
 
-    it('Tests the /api/businesses/counts route', async () => {
-        const responseDefaultParams = await request(app).get('/api/businesses/counts');
+    it('Ensures the /api/businesses/counts route exists and that the default parameters are working', async () => {
+        const response = await request(app).get('/api/businesses/counts');
 
-        check200StatusCode(responseDefaultParams);
-        checkJsonResponse(responseDefaultParams);
-        checkSort(responseDefaultParams, 'DESC', 'totalLocations');
-        checkLength(responseDefaultParams, 10);
+        check200StatusCode(response);
+        checkJsonResponse(response);
+        checkSort(response, 'DESC', 'totalLocations');
+        checkLength(response, 10);
+    });
 
-        const responseAscending = await request(app).get('/api/businesses/counts?sort=ASC');
+    it('Ensures the /api/businesses/counts?sort= route exists and that the sort query parameter is working', async () => {
+        const response = await request(app).get('/api/businesses/counts?sort=ASC');
 
-        check200StatusCode(responseAscending);
-        checkJsonResponse(responseAscending);
-        checkSort(responseAscending, 'ASC', 'totalLocations');
+        check200StatusCode(response);
+        checkJsonResponse(response);
+        checkSort(response, 'ASC', 'totalLocations');
+    });
 
-        const responseNonDefaultLimit = await request(app).get('/api/businesses/counts?limit=20');
+    it('Ensures the /api/businesses/counts?limit route exists and that the limit query parameter is working', async () => {
+        const response = await request(app).get('/api/businesses/counts?limit=20');
 
-        check200StatusCode(responseNonDefaultLimit);
-        checkJsonResponse(responseNonDefaultLimit);
-        checkLength(responseNonDefaultLimit, 20);
+        check200StatusCode(response);
+        checkJsonResponse(response);
+        checkLength(response, 20);
     });
 });
