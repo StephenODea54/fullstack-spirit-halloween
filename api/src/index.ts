@@ -13,11 +13,6 @@ app.use(cors());
 
 const PORT = 3000;
 
-app.get('/ping', (_req, res) => {
-    console.log('someone pinged here');
-    res.send('pong');
-});
-
 app.use('/api/businesses', businessRouter);
 app.use('/api/locations', locationRouter);
 app.use('/api/states', stateRouter);
