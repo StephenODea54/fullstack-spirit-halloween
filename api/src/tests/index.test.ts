@@ -99,3 +99,20 @@ describe('State Router Test Suite', () => {
         checkLength(response, 20);
     });
 });
+
+describe('Location Router Test Suite', () => {
+    it('Ensures the /api/locations route exists', async () => {
+        const response = await request(app).get('/api/locations');
+
+        check200StatusCode(response);
+        checkJsonResponse(response);
+    });
+
+    it('Ensures the /api/locations/total route exists and is of type object', async () => {
+        const response = await request(app).get('/api/locations/total');
+
+        check200StatusCode(response);
+        checkJsonResponse(response);
+        checkNotArray(response);
+    });
+});
