@@ -1,17 +1,15 @@
 // Hooks
-import { useTotalStates } from "../api/getTotalStates";
+import {useTotalStates} from '../api/getTotalStates';
 
 // Components
-import { KPICard } from "@/components/ui";
+import {KPICard} from '@/components/ui';
 
 export const TotalStatesCard = () => {
-    const { data, isLoading, isError } = useTotalStates();
+    const {data, isLoading, isError} = useTotalStates();
 
     if (isLoading) return <p>Loading...</p>;
 
     if (isError) return <p>Error!</p>;
 
-    return (
-        <KPICard metric={data.totalStates} title='Total States' />
-    );
+    return <KPICard metric={data.totalStates} title='Total States' />;
 };

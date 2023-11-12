@@ -1,9 +1,9 @@
 // Module Imports
-import { cleanup, render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it } from 'vitest';
+import {cleanup, render, screen} from '@testing-library/react';
+import {afterEach, describe, expect, it} from 'vitest';
 
 // Component
-import { KPICard } from '.';
+import {KPICard} from '.';
 
 describe('<KPICard />', () => {
     afterEach(() => {

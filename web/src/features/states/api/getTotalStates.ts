@@ -1,27 +1,27 @@
 // Module Imports
-import { useQuery } from 'react-query';
+import {useQuery} from 'react-query';
 
 // Utils
-import { axios } from '@/lib/axios';
-import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
+import {axios} from '@/lib/axios';
+import {ExtractFnReturnType, QueryConfig} from '@/lib/react-query';
 
 // Types
-import { TotalStates } from '../types';
+import {TotalStates} from '../types';
 
 export const getTotalStates = (): Promise<TotalStates> => {
-  return axios.get(`/api/states/total`);
+    return axios.get(`/api/states/total`);
 };
 
 type QueryFnType = typeof getTotalStates;
 
 interface UseTotalStatesOptions {
-  config?: QueryConfig<QueryFnType>;
-};
+    config?: QueryConfig<QueryFnType>;
+}
 
-export const useTotalStates = ({ config }: UseTotalStatesOptions = {}) => {
-  return useQuery<ExtractFnReturnType<QueryFnType>>({
-    queryKey: ['totalStates'],
-    queryFn: () => getTotalStates(),
-    ...config,
-  });
+export const useTotalStates = ({config}: UseTotalStatesOptions = {}) => {
+    return useQuery<ExtractFnReturnType<QueryFnType>>({
+        queryKey: ['totalStates'],
+        queryFn: () => getTotalStates(),
+        ...config,
+    });
 };
