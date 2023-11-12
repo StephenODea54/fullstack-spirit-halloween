@@ -2,7 +2,7 @@ import { Card, Metric, Text } from "@tremor/react";
 
 // Types
 interface KPICardProps {
-    metric: number;
+    metric: number | string;
     title: string;
 }
 
