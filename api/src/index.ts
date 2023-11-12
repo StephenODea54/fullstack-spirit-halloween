@@ -2,6 +2,7 @@
 import express from 'express';
 
 // Router Imports
+import businessRouter from '@/routes/businesses.js';
 import locationRouter from '@/routes/locations.js';
 import stateRouter from '@/routes/states.js';
 
@@ -15,6 +16,7 @@ app.get('/ping', (_req, res) => {
     res.send('pong');
 });
 
+app.use('/api/businesses', businessRouter);
 app.use('/api/locations', locationRouter);
 app.use('/api/states', stateRouter);
 

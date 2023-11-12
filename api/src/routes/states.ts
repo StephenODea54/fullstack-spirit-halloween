@@ -3,9 +3,9 @@ import express, { type Request } from 'express';
 
 // Services Import
 import stateServices from '@/services/stateServices.js';
-import { State } from '@/types/index.js';
 
 // Types
+import { State } from '@/types/index.js';
 type EmptyRecord = Record<string, never>;
 
 const router = express.Router();
