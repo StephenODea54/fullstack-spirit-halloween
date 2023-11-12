@@ -1,3 +1,12 @@
+// Module Imports
+import type { Request } from 'express';
+
+export interface FormerBusiness {
+    id: string;
+    formerBusiness: string;
+    totalLocations: number;
+}
+
 export interface Location {
     id: string;
     address: string;
@@ -12,3 +21,10 @@ export interface State {
     state: string;
     totalLocations: number;
 }
+
+export type TypedRequestQuery<TOutput, TInput> = Request<
+    Record<string, never>,
+    TOutput,
+    Record<string, never>,
+    TInput
+>;
