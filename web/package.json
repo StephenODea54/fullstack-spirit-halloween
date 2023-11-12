@@ -15,11 +15,15 @@
     },
     "dependencies": {
         "@tremor/react": "^3.11.0",
+        "axios": "^1.6.1",
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-import": "^2.29.0",
         "eslint-plugin-jsx-a11y": "^6.8.0",
         "eslint-plugin-react": "^7.33.2",
-        "react-dom": "^18.2.0"
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-query": "^3.39.3",
+        "type-fest": "^4.7.1"
     },
     "devDependencies": {
         "@testing-library/react": "^14.1.0",
@@ -38,7 +42,6 @@
         "lint-staged": "^15.1.0",
         "postcss": "^8.4.31",
         "prettier": "^3.0.3",
-        "react": "link:@types/testing-library/react",
         "tailwindcss": "^3.3.5",
         "typescript": "^5.0.2",
         "vite": "^4.4.5",
