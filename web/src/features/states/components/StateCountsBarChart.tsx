@@ -1,9 +1,9 @@
 // Hooks
-import { Card, Text } from '@tremor/react';
-import { useStateCounts } from '../api';
+import {Card, Text} from '@tremor/react';
+import {useStateCounts} from '../api';
 
 // Components
-import { BarChart } from '@/components/ui';
+import {BarChart} from '@/components/ui';
 
 // Types
 interface StateCountsBarChartProps {
@@ -11,16 +11,16 @@ interface StateCountsBarChartProps {
     sort?: 'ASC' | 'DESC';
 }
 
-export const StateCountsBarChart = ({ limit = 10, sort = 'DESC' }: StateCountsBarChartProps) => {
-    const customTooltip = ({ payload, active }: { payload: any, active: boolean | undefined }) => {
+export const StateCountsBarChart = ({limit = 10, sort = 'DESC'}: StateCountsBarChartProps) => {
+    const customTooltip = ({payload, active}: {payload: any; active: boolean | undefined}) => {
         if (!active || !payload) return null;
 
         return (
-            <Card className="w-56 p-2">
-                {payload.map((category: { color: string; value: number }, idx: number) => (
-                    <div key={idx} className="flex flex-1 space-x-2.5">
+            <Card className='w-56 p-2'>
+                {payload.map((category: {color: string; value: number}, idx: number) => (
+                    <div key={idx} className='flex flex-1 space-x-2.5'>
                         <div className={`w-1 flex flex-col bg-${category.color}-500 rounded`} />
-                        <div className="space-y-1">
+                        <div className='space-y-1'>
                             <Text>{category.value} Locations</Text>
                         </div>
                     </div>
@@ -29,7 +29,7 @@ export const StateCountsBarChart = ({ limit = 10, sort = 'DESC' }: StateCountsBa
         );
     };
 
-    const { data, isError } = useStateCounts({ limit, sort });
+    const {data, isError} = useStateCounts({limit, sort});
 
     if (isError) return <p>Error!</p>;
 

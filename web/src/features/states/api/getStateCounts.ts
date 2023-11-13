@@ -31,10 +31,10 @@ type UseStateCountsOptions = {
     sort: 'ASC' | 'DESC';
 };
 
-export const useStateCounts = ({ config = {}, limit, sort }: UseStateCountsOptions) => {
+export const useStateCounts = ({config = {}, limit, sort}: UseStateCountsOptions) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         queryKey: ['stateCounts', limit, sort],
-        queryFn: () => getStateCounts({ limit, sort }),
+        queryFn: () => getStateCounts({limit, sort}),
         ...config,
     });
 };

@@ -16,7 +16,7 @@ export const getFormerBusinessCounts = ({
     sort: 'ASC' | 'DESC';
 }): Promise<TotalFormerBusinesses[]> => {
     return axios.get(`/api/businesses/counts`, {
-        params: {   
+        params: {
             limit: limit,
             sort: sort,
         },
@@ -31,10 +31,10 @@ type UseFormerBusinessCountsOptions = {
     sort: 'ASC' | 'DESC';
 };
 
-export const useFormerBusinessCounts = ({ config = {}, limit, sort }: UseFormerBusinessCountsOptions) => {
+export const useFormerBusinessCounts = ({config = {}, limit, sort}: UseFormerBusinessCountsOptions) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         queryKey: ['formerBusinessCounts', limit, sort],
-        queryFn: () => getFormerBusinessCounts({ limit, sort }),
+        queryFn: () => getFormerBusinessCounts({limit, sort}),
         ...config,
     });
 };
