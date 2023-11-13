@@ -12,7 +12,7 @@ interface StateCountsBarChartProps {
 }
 
 export const StateCountsBarChart = ({ limit = 10, sort = 'DESC' }: StateCountsBarChartProps) => {
-    const customTooltip = ({ payload, active }: { payload: any, active: any }) => {
+    const customTooltip = ({ payload, active }: { payload: any, active: boolean | undefined }) => {
         if (!active || !payload) return null;
 
         return (
