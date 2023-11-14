@@ -5,7 +5,7 @@ import {AppProvider} from '@/providers';
 import {Layout} from '@/components/layout';
 
 // Pages
-import {OverviewPage} from '@/pages';
+import {DetailPage, OverviewPage} from '@/pages';
 
 // Components
 import {Tab, TabGroup, TabList, TabPanel, TabPanels} from '@tremor/react';
@@ -23,7 +23,9 @@ export default function App() {
                         <TabPanel>
                             <OverviewPage />
                         </TabPanel>
-                        <TabPanel>Hello from the details tab</TabPanel>
+                        <TabPanel>
+                            <DetailPage />
+                        </TabPanel>
                     </TabPanels>
                 </TabGroup>
             </Layout>
