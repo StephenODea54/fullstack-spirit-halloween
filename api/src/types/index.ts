@@ -16,12 +16,6 @@ export interface Location {
     formerBusiness: string;
 }
 
-export interface State {
-    id: string;
-    state: string;
-    totalLocations: number;
-}
-
 export type TypedRequestQuery<TOutput, TInput> = Request<
     Record<string, never>,
     TOutput,

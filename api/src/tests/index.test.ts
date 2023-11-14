@@ -73,31 +73,6 @@ describe('State Router Test Suite', () => {
         checkJsonResponse(response);
         checkNotArray(response);
     });
-
-    it('Ensures the /api/states/counts route exists and that the default parameters are working', async () => {
-        const response = await request(app).get('/api/states/counts');
-
-        check200StatusCode(response);
-        checkJsonResponse(response);
-        checkSort(response, 'DESC', 'totalLocations');
-        checkLength(response, 10);
-    });
-
-    it('Ensures the /api/states/counts?sort= route exists and that the sort query parameter is working', async () => {
-        const response = await request(app).get('/api/states/counts?sort=ASC');
-
-        check200StatusCode(response);
-        checkJsonResponse(response);
-        checkSort(response, 'ASC', 'totalLocations');
-    });
-
-    it('Ensures the /api/states/counts?limit route exists and that the limit query parameter is working', async () => {
-        const response = await request(app).get('/api/states/counts?limit=20');
-
-        check200StatusCode(response);
-        checkJsonResponse(response);
-        checkLength(response, 20);
-    });
 });
 
 describe('Location Router Test Suite', () => {
