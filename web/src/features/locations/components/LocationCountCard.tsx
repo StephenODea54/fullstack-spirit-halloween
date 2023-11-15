@@ -13,7 +13,13 @@ export const LocationCountCard = () => {
     if (isError) {
         return <Subtitle>Error!</Subtitle>;
     } else if (data) {
-        return <KPICard metric={data.totalLocations} title='Total Locations' />;
+        return (
+            <KPICard
+                metric={data.totalLocations}
+                title='Locations'
+                tooltipText='The total number of department stores available in the data.'
+            />
+        );
     } else {
         return <></>;
     }

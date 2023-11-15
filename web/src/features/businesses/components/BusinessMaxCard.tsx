@@ -13,7 +13,13 @@ export const BusinessMaxCard = () => {
     if (isError) {
         return <Subtitle>Error!</Subtitle>;
     } else if (data) {
-        return <KPICard metric={data.formerBusiness} title='Former Business with the Most Locations' />;
+        return (
+            <KPICard
+                metric={data.formerBusiness}
+                title='Most Frequent location'
+                tooltipText='The former store with the most Spirit Halloween locations.'
+            />
+        );
     } else {
         return <></>;
     }
