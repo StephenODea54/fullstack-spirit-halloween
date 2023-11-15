@@ -95,6 +95,21 @@ describe('State Router Test Suite', () => {
         checkJsonResponse(response);
         checkNotArray(response);
     });
+
+    it('Ensures the /api/states route exists', async () => {
+        const response = await request(app).get('/api/businesses');
+
+        check200StatusCode(response);
+        checkJsonResponse(response);
+    });
+
+    it('Ensures the /api/states?stateName route exists and performs the proper filtering', async () => {
+        const response = await request(app).get('/api/states?stateName=o');
+
+        check200StatusCode(response);
+        checkJsonResponse(response);
+        checkLikeOperator(response, 'state', 'o');
+    });
 });
 
 describe('Location Router Test Suite', () => {
