@@ -10,6 +10,16 @@ import type { FormerBusiness, TypedRequestQuery } from '@/types/index.js';
 const router = express.Router();
 
 router.get(
+    '/',
+    (req: TypedRequestQuery<{ formerBusiness: string }[], { businessName: string | undefined }>, res) => {
+        const { businessName } = req.query;
+        const formerBusinesses = businessServices.getBusinessNames(businessName);
+
+        res.send(formerBusinesses);
+    },
+);
+
+router.get(
     '/counts',
     (req: TypedRequestQuery<FormerBusiness[], { sort: 'ASC' | 'DESC'; limit: number }>, res) => {
         const { sort, limit } = req.query;

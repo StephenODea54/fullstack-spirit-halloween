@@ -1,4 +1,5 @@
 /* eslint @typescript-eslint/no-unsafe-member-access: 0 */
+/* eslint @typescript-eslint/no-unsafe-call: 0 */
 
 // Module Imports
 import request, { type Response } from 'supertest';
@@ -27,6 +28,12 @@ const checkLength = (response: Response, length: number): void => {
 
 const checkNotArray = (response: Response): void => {
     expect(Array.isArray(response.body)).toBe(false);
+};
+
+const checkLikeOperator = (response: Response, column: string, param: string): void => {
+    response.body.forEach((response) =>
+        expect(response[column].toLowerCase().substring(0, param.length)).toContain(param),
+    );
 };
 
 // Tests
@@ -62,6 +69,21 @@ describe('Businesses Router Test Suite', () => {
         check200StatusCode(response);
         checkJsonResponse(response);
         checkLength(response, 20);
+    });
+
+    it('Ensures the /api/businesses route exists', async () => {
+        const response = await request(app).get('/api/businesses');
+
+        check200StatusCode(response);
+        checkJsonResponse(response);
+    });
+
+    it('Ensures the /api/businesses?businessName route exists and performs the proper filtering', async () => {
+        const response = await request(app).get('/api/businesses?businessName=bed');
+
+        check200StatusCode(response);
+        checkJsonResponse(response);
+        checkLikeOperator(response, 'formerBusiness', 'bed');
     });
 });
 

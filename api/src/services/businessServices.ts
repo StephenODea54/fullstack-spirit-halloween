@@ -1,5 +1,5 @@
 // Module Imports
-import { asc, desc, eq, sql } from 'drizzle-orm';
+import { asc, desc, eq, like, sql } from 'drizzle-orm';
 
 // DB Imports
 import { db } from '@/db/db.js';
@@ -7,6 +7,21 @@ import * as schema from '@/db/schema.js';
 
 // Types
 import type { FormerBusiness } from '@/types/index.js';
+
+const getBusinessNames = (businessName: string | undefined): { formerBusiness: string }[] => {
+    const query = db
+        .selectDistinct({ formerBusiness: schema.formerBusinesses.formerBusiness })
+        .from(schema.formerBusinesses);
+
+    if (businessName === undefined) {
+        return query.orderBy(schema.formerBusinesses.formerBusiness).all();
+    } else {
+        return query
+            .where(like(schema.formerBusinesses.formerBusiness, `${businessName}%`))
+            .orderBy(schema.formerBusinesses.formerBusiness)
+            .all();
+    }
+};
 
 const getFormerBusinessCounts = (sort: 'ASC' | 'DESC' = 'DESC', limit: number = 10): FormerBusiness[] => {
     const results = db
@@ -52,6 +67,7 @@ const getHighestFormerBusiness = (): { formerBusiness: string; totalLocations: n
 };
 
 export default {
+    getBusinessNames,
     getFormerBusinessCounts,
     getHighestFormerBusiness,
 };
