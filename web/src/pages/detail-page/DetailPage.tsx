@@ -7,9 +7,13 @@ import { LocationsTable } from '@/features/locations';
 
 export const DetailPage = () => {
     return (
-        <Card className='pt-6 mt-6'>
-            <BusinessSelectBox />
-            <LocationsTable />
+        <Card className='mt-6'>
+            <div className='max-w-lg'>
+                <BusinessSelectBox />
+            </div>
+            <div className='mt-6'>
+                <LocationsTable />
+            </div>
         </Card>
     );
 };
