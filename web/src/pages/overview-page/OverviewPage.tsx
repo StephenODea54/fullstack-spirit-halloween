@@ -1,14 +1,14 @@
 // Module Imports
-import {useState} from 'react';
-import {BarsArrowDownIcon, BarsArrowUpIcon} from '@heroicons/react/24/outline';
+import { useState } from 'react';
+import { BarsArrowDownIcon, BarsArrowUpIcon } from '@heroicons/react/24/outline';
 
 // Features
-import {BusinessBarChart, BusinessMaxCard} from '@/features/businesses';
-import {LocationCountCard} from '@/features/locations';
-import {StateCountCard} from '@/features/states';
+import { BusinessBarChart, BusinessMaxCard } from '@/features/businesses';
+import { LocationCountCard } from '@/features/locations';
+import { StateCountCard } from '@/features/states';
 
 // Components
-import {Card, Flex, Grid, Select, SelectItem, Tab, TabGroup, TabList, Text, Title} from '@tremor/react';
+import { Card, Flex, Grid, Select, SelectItem, Tab, TabGroup, TabList, Text, Title } from '@tremor/react';
 
 // Constants
 const LIMITS = [5, 10, 15, 20, 25];

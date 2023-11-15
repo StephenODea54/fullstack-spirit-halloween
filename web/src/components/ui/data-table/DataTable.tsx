@@ -1,5 +1,5 @@
 // Module Imports
-import {useState} from 'react';
+import { useState } from 'react';
 import {
     flexRender,
     getPaginationRowModel,
@@ -9,10 +9,10 @@ import {
     useReactTable,
     type ColumnDef,
 } from '@tanstack/react-table';
-import {Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow} from '@tremor/react';
+import { Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow } from '@tremor/react';
 
 // Components
-import {DataTableFooter} from '.';
+import { DataTableFooter } from '.';
 
 // Types
 interface DataTableProps<TData, TValue> {
@@ -20,7 +20,7 @@ interface DataTableProps<TData, TValue> {
     data: TData[];
 }
 
-export const DataTable = <TData, TValue>({columns, data}: DataTableProps<TData, TValue>) => {
+export const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) => {
     const [sorting, setSorting] = useState<SortingState>([]);
 
     const table = useReactTable({

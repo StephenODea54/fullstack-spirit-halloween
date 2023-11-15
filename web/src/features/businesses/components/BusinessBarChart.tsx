@@ -1,11 +1,11 @@
 // Module Imports
-import {Card, Text} from '@tremor/react';
+import { Card, Text } from '@tremor/react';
 
 // Hooks
-import {useBusinessCounts} from '../api';
+import { useBusinessCounts } from '../api';
 
 // Components
-import {BarChart} from '@/components/ui';
+import { BarChart } from '@/components/ui';
 
 // Types
 interface BusinessBarChartProps {
@@ -13,13 +13,13 @@ interface BusinessBarChartProps {
     sort?: 'ASC' | 'DESC';
 }
 
-export const BusinessBarChart = ({limit = 10, sort = 'DESC'}: BusinessBarChartProps) => {
-    const customTooltip = ({payload, active}: {payload: any; active: boolean | undefined}) => {
+export const BusinessBarChart = ({ limit = 10, sort = 'DESC' }: BusinessBarChartProps) => {
+    const customTooltip = ({ payload, active }: { payload: any; active: boolean | undefined }) => {
         if (!active || !payload) return null;
 
         return (
             <Card className='w-56 p-2'>
-                {payload.map((category: {color: string; value: number}, idx: number) => (
+                {payload.map((category: { color: string; value: number }, idx: number) => (
                     <div key={idx} className='flex flex-1 space-x-2.5'>
                         <div className={`w-1 flex flex-col bg-${category.color}-500 rounded`} />
                         <div className='space-y-1'>
@@ -31,7 +31,7 @@ export const BusinessBarChart = ({limit = 10, sort = 'DESC'}: BusinessBarChartPr
         );
     };
 
-    const {data, isError} = useBusinessCounts({limit, sort});
+    const { data, isError } = useBusinessCounts({ limit, sort });
 
     if (isError) return <p>Error!</p>;
 

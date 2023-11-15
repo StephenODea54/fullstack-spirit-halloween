@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "lint:fix": "eslint --fix .",
-        "format": "prettier --write .",
+        "format": "prettier --write . --config ./.prettierrc",
         "prepare": "cd ../ && husky install ./web/.husky",
         "dev": "vite",
         "build": "tsc && vite build",

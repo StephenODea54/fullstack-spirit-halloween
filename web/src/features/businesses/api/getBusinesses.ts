@@ -1,12 +1,12 @@
 // Module Imports
-import {useQuery} from 'react-query';
+import { useQuery } from 'react-query';
 
 // Utils
-import {axios} from '@/lib/axios';
-import {ExtractFnReturnType, QueryConfig} from '@/lib/react-query';
+import { axios } from '@/lib/axios';
+import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
 
 // Types
-import type {GetBusinessResponseType} from '../types';
+import type { GetBusinessResponseType } from '../types';
 
 export const getBusinesses = (): Promise<GetBusinessResponseType[]> => {
     return axios.get(`/api/businesses`);
@@ -18,7 +18,7 @@ interface UseBusinessesOptions {
     config?: QueryConfig<QueryFnType>;
 }
 
-export const useBusinesses = ({config}: UseBusinessesOptions = {}) => {
+export const useBusinesses = ({ config }: UseBusinessesOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         queryKey: ['businesses'],
         queryFn: () => getBusinesses(),

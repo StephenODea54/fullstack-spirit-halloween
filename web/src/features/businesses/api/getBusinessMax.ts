@@ -1,12 +1,12 @@
 // Module Imports
-import {useQuery} from 'react-query';
+import { useQuery } from 'react-query';
 
 // Utils
-import {axios} from '@/lib/axios';
-import {ExtractFnReturnType, QueryConfig} from '@/lib/react-query';
+import { axios } from '@/lib/axios';
+import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
 
 // Types
-import type {GetBusinessMaxResponseType} from '../types';
+import type { GetBusinessMaxResponseType } from '../types';
 
 export const getBusinessMax = (): Promise<GetBusinessMaxResponseType> => {
     return axios.get(`/api/businesses/max`);
@@ -18,7 +18,7 @@ interface UseBusinessMaxOptions {
     config?: QueryConfig<QueryFnType>;
 }
 
-export const useBusinessMax = ({config}: UseBusinessMaxOptions = {}) => {
+export const useBusinessMax = ({ config }: UseBusinessMaxOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         queryKey: ['businessMax'],
         queryFn: () => getBusinessMax(),

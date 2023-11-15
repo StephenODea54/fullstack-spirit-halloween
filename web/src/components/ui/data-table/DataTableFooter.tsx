@@ -1,13 +1,13 @@
 // Module Imports
-import {useState} from 'react';
+import { useState } from 'react';
 import {
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
 } from '@heroicons/react/24/outline';
-import {Button, Flex, Select, SelectItem, Text} from '@tremor/react';
-import type {Table} from '@tanstack/react-table';
+import { Button, Flex, Select, SelectItem, Text } from '@tremor/react';
+import type { Table } from '@tanstack/react-table';
 
 // Types
 interface DataTableFooterProps<TData> {

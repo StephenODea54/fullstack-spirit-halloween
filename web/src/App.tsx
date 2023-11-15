@@ -1,14 +1,14 @@
 // Providers
-import {AppProvider} from '@/providers';
+import { AppProvider } from '@/providers';
 
 // Layout
-import {Layout} from '@/components/layout';
+import { Layout } from '@/components/layout';
 
 // Pages
-import {DetailPage, OverviewPage} from '@/pages';
+import { DetailPage, OverviewPage } from '@/pages';
 
 // Components
-import {Tab, TabGroup, TabList, TabPanel, TabPanels} from '@tremor/react';
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@tremor/react';
 
 export default function App() {
     return (

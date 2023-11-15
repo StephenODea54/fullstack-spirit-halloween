@@ -1,9 +1,9 @@
 // Module Imports
-import {Fragment} from 'react';
-import {Menu, Transition} from '@headlessui/react';
-import {ArrowDownIcon, ArrowUpIcon, ChevronUpDownIcon} from '@heroicons/react/24/outline';
-import {Button, Card, Flex} from '@tremor/react';
-import type {Column} from '@tanstack/react-table';
+import { Fragment } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { ArrowDownIcon, ArrowUpIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline';
+import { Button, Card, Flex } from '@tremor/react';
+import type { Column } from '@tanstack/react-table';
 
 // Types
 interface DataTableColumnHeaderProps<TData, TValue> {

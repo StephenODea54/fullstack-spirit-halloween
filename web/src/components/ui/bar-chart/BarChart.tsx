@@ -1,5 +1,5 @@
 // Module Imports
-import {BarChart as TremorBarChart, type Color, type CustomTooltipType} from '@tremor/react';
+import { BarChart as TremorBarChart, type Color, type CustomTooltipType } from '@tremor/react';
 
 // Types
 interface BarChartProps<T> {

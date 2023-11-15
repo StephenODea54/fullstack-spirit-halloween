@@ -1,11 +1,11 @@
 // Hooks
-import {useLocationCount} from '../api/getLocationCount';
+import { useLocationCount } from '../api/getLocationCount';
 
 // Components
-import {KPICard} from '@/components/ui';
+import { KPICard } from '@/components/ui';
 
 export const LocationCountCard = () => {
-    const {data, isLoading, isError} = useLocationCount();
+    const { data, isLoading, isError } = useLocationCount();
 
     if (isLoading) return <p>Loading...</p>;
 

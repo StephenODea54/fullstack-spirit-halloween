@@ -1,9 +1,9 @@
-import {useQuery} from 'react-query';
+import { useQuery } from 'react-query';
 
-import {axios} from '@/lib/axios';
-import {ExtractFnReturnType, QueryConfig} from '@/lib/react-query';
+import { axios } from '@/lib/axios';
+import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
 
-import {GetLocationsReturnType} from '../types';
+import { GetLocationsReturnType } from '../types';
 
 export const getLocations = (): Promise<GetLocationsReturnType[]> => {
     return axios.get(`/api/locations`);
@@ -15,7 +15,7 @@ interface UseLocationsOptions {
     config?: QueryConfig<QueryFnType>;
 }
 
-export const useLocations = ({config}: UseLocationsOptions = {}) => {
+export const useLocations = ({ config }: UseLocationsOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         queryKey: ['locations'],
         queryFn: () => getLocations(),

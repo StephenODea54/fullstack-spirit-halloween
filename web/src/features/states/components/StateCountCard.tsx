@@ -1,11 +1,11 @@
 // Hooks
-import {useStateCount} from '../api/getTotalStates';
+import { useStateCount } from '../api/getTotalStates';
 
 // Components
-import {KPICard} from '@/components/ui';
+import { KPICard } from '@/components/ui';
 
 export const StateCountCard = () => {
-    const {data, isLoading, isError} = useStateCount();
+    const { data, isLoading, isError } = useStateCount();
 
     if (isLoading) return <p>Loading...</p>;
 

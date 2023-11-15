@@ -1,56 +1,56 @@
 // Module Imports
-import type {ColumnDef} from '@tanstack/react-table';
-import {Text} from '@tremor/react';
+import type { ColumnDef } from '@tanstack/react-table';
+import { Text } from '@tremor/react';
 
 // Components
-import {DataTableColumnHeader} from '@/components/ui';
+import { DataTableColumnHeader } from '@/components/ui';
 
 // Types
-import type {GetLocationCountsReturnType} from '../types';
+import type { GetLocationCountsReturnType } from '../types';
 
 export const LocationsColumns: ColumnDef<GetLocationCountsReturnType>[] = [
     {
         accessorKey: 'formerBusiness',
-        header: ({column}) => {
+        header: ({ column }) => {
             return <DataTableColumnHeader column={column}>Former Business</DataTableColumnHeader>;
         },
-        cell: ({row}) => {
+        cell: ({ row }) => {
             return <Text>{row.getValue('formerBusiness')}</Text>;
         },
     },
     {
         accessorKey: 'city',
-        header: ({column}) => {
+        header: ({ column }) => {
             return <DataTableColumnHeader column={column}>City</DataTableColumnHeader>;
         },
-        cell: ({row}) => {
+        cell: ({ row }) => {
             return <Text>{row.getValue('city')}</Text>;
         },
     },
     {
         accessorKey: 'state',
-        header: ({column}) => {
+        header: ({ column }) => {
             return <DataTableColumnHeader column={column}>State</DataTableColumnHeader>;
         },
-        cell: ({row}) => {
+        cell: ({ row }) => {
             return <Text>{row.getValue('state')}</Text>;
         },
     },
     {
         accessorKey: 'zip',
-        header: ({column}) => {
+        header: ({ column }) => {
             return <DataTableColumnHeader column={column}>Zip</DataTableColumnHeader>;
         },
-        cell: ({row}) => {
+        cell: ({ row }) => {
             return <Text>{row.getValue('zip')}</Text>;
         },
     },
     {
         accessorKey: 'address',
-        header: ({column}) => {
+        header: ({ column }) => {
             return <DataTableColumnHeader column={column}>Address</DataTableColumnHeader>;
         },
-        cell: ({row}) => {
+        cell: ({ row }) => {
             return <Text>{row.getValue('address')}</Text>;
         },
     },

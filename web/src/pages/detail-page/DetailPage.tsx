@@ -1,9 +1,9 @@
 // Module Imports
-import {Card} from '@tremor/react';
+import { Card } from '@tremor/react';
 
 // Features
-import {BusinessSelectBox} from '@/features/businesses/components/BusinessSelectBox';
-import {LocationsTable} from '@/features/locations';
+import { BusinessSelectBox } from '@/features/businesses/components/BusinessSelectBox';
+import { LocationsTable } from '@/features/locations';
 
 export const DetailPage = () => {
     return (

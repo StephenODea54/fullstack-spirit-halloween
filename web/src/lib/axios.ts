@@ -2,7 +2,7 @@
 import Axios from 'axios';
 
 // Config
-import {API_URL} from '@/config';
+import { API_URL } from '@/config';
 
 export const axios = Axios.create({
     baseURL: API_URL,
