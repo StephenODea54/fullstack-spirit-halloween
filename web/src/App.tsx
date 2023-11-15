@@ -1,6 +1,9 @@
 // Providers
 import { AppProvider } from '@/providers';
 
+// Head
+import { Head } from '@/components/head';
+
 // Layout
 import { Layout } from '@/components/layout';
 
@@ -13,6 +16,10 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@tremor/react';
 export default function App() {
     return (
         <AppProvider>
+            <Head
+                title='Spirit Halloween'
+                description='An economic analysis of what former department stores were home to Spirit Halloween locations in 2023.'
+            />
             <Layout>
                 <TabGroup>
                     <TabList>

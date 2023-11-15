@@ -1,4 +1,5 @@
 // Module Imports
+import { HelmetProvider } from 'react-helmet-async';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
@@ -15,11 +16,13 @@ interface AppProviderProps {
 
 export const AppProvider = ({ children }: AppProviderProps) => {
     return (
-        <QueryClientProvider client={queryClient}>
-            {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
-            <ThemeProvider defaultTheme='light' storageKey='theme'>
-                {children}
-            </ThemeProvider>
-        </QueryClientProvider>
+        <HelmetProvider>
+            <QueryClientProvider client={queryClient}>
+                {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
+                <ThemeProvider defaultTheme='light' storageKey='theme'>
+                    {children}
+                </ThemeProvider>
+            </QueryClientProvider>
+        </HelmetProvider>
     );
 };

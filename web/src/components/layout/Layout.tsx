@@ -21,9 +21,7 @@ export const Layout = ({ children }: LayoutProps) => {
                         <div className='w-full'>
                             <Title>2023 Spirit Halloween Locations</Title>
                             <div className='hidden sm:block'>
-                                <Text>
-                                    Analysis restricted to former U.S. department stores.
-                                </Text>
+                                <Text>Analysis restricted to former U.S. department stores.</Text>
                             </div>
                         </div>
                         <TabGroup
