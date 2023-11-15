@@ -71,13 +71,6 @@ describe('Businesses Router Test Suite', () => {
         checkLength(response, 20);
     });
 
-    it('Ensures the /api/businesses route exists', async () => {
-        const response = await request(app).get('/api/businesses');
-
-        check200StatusCode(response);
-        checkJsonResponse(response);
-    });
-
     it('Ensures the /api/businesses?businessName route exists and performs the proper filtering', async () => {
         const response = await request(app).get('/api/businesses?businessName=bed');
 
@@ -94,13 +87,6 @@ describe('State Router Test Suite', () => {
         check200StatusCode(response);
         checkJsonResponse(response);
         checkNotArray(response);
-    });
-
-    it('Ensures the /api/states route exists', async () => {
-        const response = await request(app).get('/api/businesses');
-
-        check200StatusCode(response);
-        checkJsonResponse(response);
     });
 
     it('Ensures the /api/states?stateName route exists and performs the proper filtering', async () => {

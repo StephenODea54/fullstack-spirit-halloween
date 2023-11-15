@@ -5,17 +5,15 @@ import { like, sql } from 'drizzle-orm';
 import { db } from '@/db/db.js';
 import * as schema from '@/db/schema.js';
 
-const getStateNames = (stateName?: string): { state: string }[] => {
-    const query = db.selectDistinct({ state: schema.states.state }).from(schema.states);
+const getStateNames = (stateName: string): { state: string }[] => {
+    const results = db
+        .selectDistinct({ state: schema.states.state })
+        .from(schema.states)
+        .where(like(schema.states.state, `${stateName}%`))
+        .orderBy(schema.states.state)
+        .all();
 
-    if (stateName === undefined) {
-        return query.orderBy(schema.states.state).all();
-    } else {
-        return query
-            .where(like(schema.states.state, `${stateName}%`))
-            .orderBy(schema.states.state)
-            .all();
-    }
+    return results;
 };
 
 const getTotalStates = (): { totalStates: number } => {

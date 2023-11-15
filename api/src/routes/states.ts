@@ -9,7 +9,7 @@ import type { TypedRequestQuery } from '@/types/index.js';
 
 const router = express.Router();
 
-router.get('/', (req: TypedRequestQuery<{ state: string }[], { stateName: string | undefined }>, res) => {
+router.get('/', (req: TypedRequestQuery<{ state: string }[], { stateName: string }>, res) => {
     const { stateName } = req.query;
     const stateNames = stateServices.getStateNames(stateName);
 

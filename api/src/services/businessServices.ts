@@ -8,19 +8,15 @@ import * as schema from '@/db/schema.js';
 // Types
 import type { FormerBusiness } from '@/types/index.js';
 
-const getBusinessNames = (businessName: string | undefined): { formerBusiness: string }[] => {
-    const query = db
+const getBusinessNames = (businessName: string): { formerBusiness: string }[] => {
+    const results = db
         .selectDistinct({ formerBusiness: schema.formerBusinesses.formerBusiness })
-        .from(schema.formerBusinesses);
+        .from(schema.formerBusinesses)
+        .where(like(schema.formerBusinesses.formerBusiness, `${businessName}%`))
+        .orderBy(schema.formerBusinesses.formerBusiness)
+        .all();
 
-    if (businessName === undefined) {
-        return query.orderBy(schema.formerBusinesses.formerBusiness).all();
-    } else {
-        return query
-            .where(like(schema.formerBusinesses.formerBusiness, `${businessName}%`))
-            .orderBy(schema.formerBusinesses.formerBusiness)
-            .all();
-    }
+    return results;
 };
 
 const getFormerBusinessCounts = (sort: 'ASC' | 'DESC' = 'DESC', limit: number = 10): FormerBusiness[] => {
