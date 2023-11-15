@@ -1,6 +1,7 @@
 // Module Imports
 import { useState } from 'react';
 import {
+    ColumnFiltersState,
     flexRender,
     getPaginationRowModel,
     getCoreRowModel,
@@ -8,11 +9,13 @@ import {
     SortingState,
     useReactTable,
     type ColumnDef,
+    getFilteredRowModel,
 } from '@tanstack/react-table';
 import { Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow } from '@tremor/react';
 
 // Components
 import { DataTableFooter } from '.';
+import { BusinessSelectBox } from '@/features/businesses';
 
 // Types
 interface DataTableProps<TData, TValue> {
@@ -22,15 +25,21 @@ interface DataTableProps<TData, TValue> {
 
 export const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) => {
     const [sorting, setSorting] = useState<SortingState>([]);
+    const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
+        []
+    )
 
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        onColumnFiltersChange: setColumnFilters,
         onSortingChange: setSorting,
+        getFilteredRowModel: getFilteredRowModel(),
         getSortedRowModel: getSortedRowModel(),
         state: {
+            columnFilters,
             sorting,
         },
         autoResetPageIndex: false,
@@ -38,7 +47,10 @@ export const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData
 
     return (
         <>
-            <Table>
+            <div className='max-w-lg'>
+                <BusinessSelectBox table={table} />
+            </div>
+            <Table className='mt-6'>
                 <TableHead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <TableRow key={headerGroup.id}>
