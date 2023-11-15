@@ -19,10 +19,10 @@ export const Layout = ({ children }: LayoutProps) => {
                 <Flex className='space-y-6' flexDirection='col' justifyContent='start'>
                     <Flex>
                         <div className='w-full'>
-                            <Title>Dashboard</Title>
+                            <Title>2023 Spirit Halloween Locations</Title>
                             <div className='hidden sm:block'>
                                 <Text>
-                                    An analysis of which department stores are now Spirit Halloween Locations
+                                    Analysis restricted to former U.S. department stores.
                                 </Text>
                             </div>
                         </div>
