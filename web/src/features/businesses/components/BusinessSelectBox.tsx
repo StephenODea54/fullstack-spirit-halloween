@@ -12,14 +12,16 @@ export const BusinessSelectBox = () => {
 
     if (isError) return <p>Error!</p>;
 
-    return (
-        <SearchSelect placeholder='Search for businesses...' value={business} onValueChange={setBusiness}>
-            {data &&
-                data.map((business: { id: string; formerBusiness: string | undefined }) => (
-                    <SearchSelectItem key={business.id} value={business.formerBusiness || ''}>
-                        {business.formerBusiness}
-                    </SearchSelectItem>
-                ))}
-        </SearchSelect>
-    );
+    if (data) {
+        return (
+            <SearchSelect placeholder='Search for businesses...' value={business} onValueChange={setBusiness}>
+                {data &&
+                    data.map((business: { id: string; formerBusiness: string | undefined }) => (
+                        <SearchSelectItem key={business.id} value={business.formerBusiness || ''}>
+                            {business.formerBusiness}
+                        </SearchSelectItem>
+                    ))}
+            </SearchSelect>
+        );
+    }
 };
