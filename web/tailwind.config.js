@@ -127,4 +127,5 @@ module.exports = {
         },
     ],
     plugins: [require('@headlessui/tailwindcss')],
+    darkMode: 'class',
 };

@@ -2,6 +2,9 @@
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+// Components
+import { ThemeProvider } from '@/components/theme';
+
 // Utils
 import { queryClient } from '@/lib';
 
@@ -14,7 +17,9 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     return (
         <QueryClientProvider client={queryClient}>
             {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
-            {children}
+            <ThemeProvider defaultTheme='light' storageKey='theme'>
+                {children}
+            </ThemeProvider>
         </QueryClientProvider>
     );
 };
