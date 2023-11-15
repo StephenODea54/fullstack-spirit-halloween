@@ -1,11 +1,9 @@
 // Module Imports
 import { MoonIcon, SunIcon } from '@heroicons/react/20/solid';
+import { Flex, Tab, TabGroup, TabList, Text, Title } from '@tremor/react';
 
 // Hooks
 import { useTheme } from '@/hooks';
-
-// Components
-import { Tab, TabGroup, TabList, Text, Title } from '@tremor/react';
 
 // Types
 interface LayoutProps {
@@ -18,11 +16,15 @@ export const Layout = ({ children }: LayoutProps) => {
     return (
         <div className='min-h-screen bg-slate-50 dark:bg-slate-950'>
             <main className='container mx-auto px-4 py-12 sm:px-6 lg:px-8'>
-                <div className='flex flex-col space-y-6'>
-                    <div className='flex items-center justify-between'>
-                        <div>
-                            <Title>Spirit Halloween - Economic Analysis</Title>
-                            <Text>Inspired by u/plutoandmal</Text>
+                <Flex className='space-y-6' flexDirection='col' justifyContent='start'>
+                    <Flex>
+                        <div className='w-full'>
+                            <Title>Dashboard</Title>
+                            <div className='hidden sm:block'>
+                                <Text>
+                                    An analysis of which department stores are now Spirit Halloween Locations
+                                </Text>
+                            </div>
                         </div>
                         <TabGroup
                             onIndexChange={index => {
@@ -38,9 +40,9 @@ export const Layout = ({ children }: LayoutProps) => {
                                 <Tab icon={MoonIcon} />
                             </TabList>
                         </TabGroup>
-                    </div>
+                    </Flex>
                     {children}
-                </div>
+                </Flex>
             </main>
         </div>
     );

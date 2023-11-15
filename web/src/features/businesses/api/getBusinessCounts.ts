@@ -8,6 +8,14 @@ import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
 // Types
 import type { GetBusinessCountsReturnType } from '../types';
 
+type QueryFnType = typeof getBusinessCounts;
+
+interface UseBusinessCountsOptions {
+    config?: QueryConfig<QueryFnType>;
+    limit: number;
+    sort: 'ASC' | 'DESC';
+}
+
 export const getBusinessCounts = ({
     limit,
     sort,
@@ -21,14 +29,6 @@ export const getBusinessCounts = ({
             sort: sort,
         },
     });
-};
-
-type QueryFnType = typeof getBusinessCounts;
-
-type UseBusinessCountsOptions = {
-    config?: QueryConfig<QueryFnType>;
-    limit: number;
-    sort: 'ASC' | 'DESC';
 };
 
 export const useBusinessCounts = ({ config = {}, limit, sort }: UseBusinessCountsOptions) => {

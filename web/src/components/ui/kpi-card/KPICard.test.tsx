@@ -5,16 +5,17 @@ import { afterEach, describe, expect, it } from 'vitest';
 // Component
 import { KPICard } from '.';
 
+// Constants
+const TITLE = 'Unit Testing the KPI Card';
+const METRIC = 10;
+
 describe('<KPICard />', () => {
     afterEach(() => {
         cleanup();
     });
 
     it('KPI Card should correctly display title and metric props', () => {
-        const title = 'Unit Testing the KPI Card';
-        const metric = 10;
-
-        render(<KPICard title={title} metric={metric} />);
+        render(<KPICard title={TITLE} metric={METRIC} />);
 
         const titleElement = screen.queryByText('Unit Testing the KPI Card');
         const metricElement = screen.queryByText('10');

@@ -1,3 +1,6 @@
+// Module Imports
+import { Subtitle } from '@tremor/react';
+
 // Hooks
 import { useStateCount } from '../api/getTotalStates';
 
@@ -5,11 +8,13 @@ import { useStateCount } from '../api/getTotalStates';
 import { KPICard } from '@/components/ui';
 
 export const StateCountCard = () => {
-    const { data, isLoading, isError } = useStateCount();
+    const { data, isError } = useStateCount();
 
-    if (isLoading) return <p>Loading...</p>;
-
-    if (isError) return <p>Error!</p>;
-
-    return <KPICard metric={data.totalStates} title='Total States' />;
+    if (isError) {
+        return <Subtitle>Error!</Subtitle>;
+    } else if (data) {
+        return <KPICard metric={data.totalStates} title='Total States' />;
+    } else {
+        return <></>;
+    }
 };

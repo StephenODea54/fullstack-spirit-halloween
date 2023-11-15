@@ -1,7 +1,7 @@
 // Module Imports
 import { useEffect, useState } from 'react';
 
-// Context
+// Contexts
 import { ThemeProviderContext } from '@/contexts';
 
 // Types

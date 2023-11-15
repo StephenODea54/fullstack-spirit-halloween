@@ -1,13 +1,19 @@
 // Module Imports
-import { Card, Text } from '@tremor/react';
+import { BarChart, Bold, Card, Subtitle, Text } from '@tremor/react';
 
 // Hooks
 import { useBusinessCounts } from '../api';
 
-// Components
-import { BarChart } from '@/components/ui';
-
 // Types
+interface BusinessPayload {
+    color: string;
+    payload: {
+        id: string;
+        formerBusiness: string;
+        totalLocations: number;
+    };
+}
+
 interface BusinessBarChartProps {
     limit?: number;
     sort?: 'ASC' | 'DESC';
@@ -19,28 +25,37 @@ export const BusinessBarChart = ({ limit = 10, sort = 'DESC' }: BusinessBarChart
 
         return (
             <Card className='w-56 p-2'>
-                {payload.map((category: { color: string; value: number }, idx: number) => (
-                    <div key={idx} className='flex flex-1 space-x-2.5'>
-                        <div className={`w-1 flex flex-col bg-${category.color}-500 rounded`} />
-                        <div className='space-y-1'>
-                            <Text>{category.value} Locations</Text>
+                {payload.map((category: BusinessPayload, idx: number) => {
+                    return (
+                        <div key={idx} className='flex flex-1 space-x-2.5'>
+                            <div className={`w-1 flex flex-col bg-${category.color}-500 rounded`} />
+                            <div className='space-y-1'>
+                                <Bold>{category.payload.formerBusiness}</Bold>
+                                <Text>{category.payload.totalLocations} Locations</Text>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </Card>
         );
     };
 
     const { data, isError } = useBusinessCounts({ limit, sort });
 
-    if (isError) return <p>Error!</p>;
-
-    return (
-        <BarChart<typeof data>
-            categories={['totalLocations']}
-            customTooltip={customTooltip}
-            data={data}
-            index='formerBusiness'
-        />
-    );
+    if (isError) {
+        return <Subtitle>Error!</Subtitle>;
+    } else if (data) {
+        return (
+            <BarChart
+                categories={['totalLocations']}
+                customTooltip={customTooltip}
+                data={data}
+                index={'formerBusiness'}
+                showAnimation={true}
+                showLegend={false}
+            />
+        );
+    } else {
+        return <></>;
+    }
 };

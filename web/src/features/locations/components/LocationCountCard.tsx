@@ -1,3 +1,6 @@
+// Module Imports
+import { Subtitle } from '@tremor/react';
+
 // Hooks
 import { useLocationCount } from '../api/getLocationCount';
 
@@ -5,11 +8,13 @@ import { useLocationCount } from '../api/getLocationCount';
 import { KPICard } from '@/components/ui';
 
 export const LocationCountCard = () => {
-    const { data, isLoading, isError } = useLocationCount();
+    const { data, isError } = useLocationCount();
 
-    if (isLoading) return <p>Loading...</p>;
-
-    if (isError) return <p>Error!</p>;
-
-    return <KPICard metric={data.totalLocations} title='Total Locations' />;
+    if (isError) {
+        return <Subtitle>Error!</Subtitle>;
+    } else if (data) {
+        return <KPICard metric={data.totalLocations} title='Total Locations' />;
+    } else {
+        return <></>;
+    }
 };

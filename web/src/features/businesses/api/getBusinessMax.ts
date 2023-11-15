@@ -8,15 +8,15 @@ import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
 // Types
 import type { GetBusinessMaxResponseType } from '../types';
 
-export const getBusinessMax = (): Promise<GetBusinessMaxResponseType> => {
-    return axios.get(`/api/businesses/max`);
-};
-
 type QueryFnType = typeof getBusinessMax;
 
 interface UseBusinessMaxOptions {
     config?: QueryConfig<QueryFnType>;
 }
+
+export const getBusinessMax = (): Promise<GetBusinessMaxResponseType> => {
+    return axios.get(`/api/businesses/max`);
+};
 
 export const useBusinessMax = ({ config }: UseBusinessMaxOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({

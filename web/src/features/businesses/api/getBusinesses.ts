@@ -8,15 +8,15 @@ import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
 // Types
 import type { GetBusinessResponseType } from '../types';
 
-export const getBusinesses = (): Promise<GetBusinessResponseType[]> => {
-    return axios.get(`/api/businesses`);
-};
-
 type QueryFnType = typeof getBusinesses;
 
 interface UseBusinessesOptions {
     config?: QueryConfig<QueryFnType>;
 }
+
+export const getBusinesses = (): Promise<GetBusinessResponseType[]> => {
+    return axios.get(`/api/businesses`);
+};
 
 export const useBusinesses = ({ config }: UseBusinessesOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({

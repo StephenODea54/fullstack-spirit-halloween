@@ -33,7 +33,7 @@ export const OverviewPage = () => {
                         <Title>Spirit Halloween Locations by Former Business</Title>
                         <Text>Top {businessLimit} Locations</Text>
                     </Flex>
-                    <Flex className='max-w-[275px]'>
+                    <Flex className='max-w-[275px] self-start mt-6 md:mt-0'>
                         <TabGroup
                             onIndexChange={index => {
                                 if (index === 0) {

@@ -1,3 +1,6 @@
+// Module Imports
+import { Subtitle } from '@tremor/react';
+
 // Hooks
 import { useBusinessMax } from '../api';
 
@@ -5,11 +8,13 @@ import { useBusinessMax } from '../api';
 import { KPICard } from '@/components/ui';
 
 export const BusinessMaxCard = () => {
-    const { data, isLoading, isError } = useBusinessMax();
+    const { data, isError } = useBusinessMax();
 
-    if (isLoading) return <p>Loading...</p>;
-
-    if (isError) return <p>Error!</p>;
-
-    return <KPICard metric={data.formerBusiness} title='Former Business with the Most Locations' />;
+    if (isError) {
+        return <Subtitle>Error!</Subtitle>;
+    } else if (data) {
+        return <KPICard metric={data.formerBusiness} title='Former Business with the Most Locations' />;
+    } else {
+        return <></>;
+    }
 };

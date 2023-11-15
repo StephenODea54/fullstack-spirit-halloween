@@ -8,11 +8,9 @@ interface KPICardProps {
 
 export const KPICard = ({ metric, title }: KPICardProps) => {
     return (
-        <div className='max-w-lg'>
-            <Card>
-                <Text>{title}</Text>
-                <Metric>{metric}</Metric>
-            </Card>
-        </div>
+        <Card className='max-w-lg'>
+            <Text>{title}</Text>
+            <Metric>{metric}</Metric>
+        </Card>
     );
 };
