@@ -1,11 +1,14 @@
 // Module Imports
-import { LocationsTable } from '@/features/locations';
-import { Card } from '@tremor/react';
+import {Card} from '@tremor/react';
+
+// Features
+import {BusinessSelectBox} from '@/features/businesses/components/BusinessSelectBox';
+import {LocationsTable} from '@/features/locations';
 
 export const DetailPage = () => {
     return (
         <Card className='pt-6 mt-6'>
-            <div>Multi Select List Here</div>
+            <BusinessSelectBox />
             <LocationsTable />
         </Card>
     );
