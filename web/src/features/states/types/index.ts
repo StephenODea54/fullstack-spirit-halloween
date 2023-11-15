@@ -4,6 +4,6 @@ export interface StateCounts {
     totalLocations: number;
 }
 
-export interface TotalStates {
+export interface GetStateCountReturnType {
     totalStates: number;
 }

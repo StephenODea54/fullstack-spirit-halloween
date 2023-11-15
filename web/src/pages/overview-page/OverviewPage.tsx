@@ -1,14 +1,14 @@
 // Module Imports
-import { useState } from 'react';
-import { BarsArrowDownIcon, BarsArrowUpIcon } from '@heroicons/react/24/outline';
+import {useState} from 'react';
+import {BarsArrowDownIcon, BarsArrowUpIcon} from '@heroicons/react/24/outline';
 
 // Features
-import { FormerBusinessBarChart, MostFormerBusinessCard } from '@/features/businesses';
-import { TotalLocationsCard } from '@/features/locations';
-import { TotalStatesCard } from '@/features/states';
+import {BusinessBarChart, BusinessMaxCard} from '@/features/businesses';
+import {LocationCountCard} from '@/features/locations';
+import {StateCountCard} from '@/features/states';
 
 // Components
-import { Card, Flex, Grid, Select, SelectItem, Tab, TabGroup, TabList, Text, Title } from '@tremor/react';
+import {Card, Flex, Grid, Select, SelectItem, Tab, TabGroup, TabList, Text, Title} from '@tremor/react';
 
 // Constants
 const LIMITS = [5, 10, 15, 20, 25];
@@ -23,16 +23,14 @@ export const OverviewPage = () => {
     return (
         <>
             <Grid numItems={1} numItemsMd={3} className='gap-6 mt-6'>
-                <TotalLocationsCard />
-                <TotalStatesCard />
-                <MostFormerBusinessCard />
+                <LocationCountCard />
+                <StateCountCard />
+                <BusinessMaxCard />
             </Grid>
             <Card className='mt-6'>
                 <Flex className='md:flex-row' flexDirection='col' justifyContent='between'>
                     <Flex alignItems='start' flexDirection='col'>
-                        <Title>
-                            Spirit Halloween Locations by Former Business
-                        </Title>
+                        <Title>Spirit Halloween Locations by Former Business</Title>
                         <Text>Top {businessLimit} Locations</Text>
                     </Flex>
                     <Flex className='max-w-[275px]'>
@@ -62,7 +60,7 @@ export const OverviewPage = () => {
                     </Flex>
                 </Flex>
                 <Flex className='mt-6'>
-                    <FormerBusinessBarChart limit={businessLimit} sort={businessSort} />
+                    <BusinessBarChart limit={businessLimit} sort={businessSort} />
                 </Flex>
             </Card>
         </>

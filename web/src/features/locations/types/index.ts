@@ -1,4 +1,4 @@
-export interface Location {
+export interface GetLocationsReturnType {
     id: string;
     address: string;
     city: string;
@@ -7,6 +7,6 @@ export interface Location {
     formerBusiness: string;
 }
 
-export interface TotalLocations {
+export interface GetLocationCountsReturnType {
     totalLocations: number;
 }

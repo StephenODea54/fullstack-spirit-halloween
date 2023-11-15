@@ -2,12 +2,12 @@ export interface GetBusinessResponseType {
     formerBusiness: string;
 }
 
-export interface MostFormerBusiness {
+export interface GetBusinessMaxResponseType {
     formerBusiness: string;
     totalLocations: number;
 }
 
-export interface TotalFormerBusinesses {
+export interface GetBusinessCountsReturnType {
     id: string;
     formerBusiness: string;
     totalLocations: number;

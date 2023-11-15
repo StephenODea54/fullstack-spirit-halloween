@@ -1,1 +1,1 @@
-export * from './TotalStatesCard';
+export * from './StateCountCard';

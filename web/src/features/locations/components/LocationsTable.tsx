@@ -1,6 +1,6 @@
 // Components
 import {DataTable} from '@/components/ui';
-import {LocationsColumns} from '.';
+import {LocationsColumns} from '../components';
 
 // Hooks
 import {useLocations} from '../api';

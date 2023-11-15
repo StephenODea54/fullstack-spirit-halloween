@@ -6,22 +6,22 @@ import {axios} from '@/lib/axios';
 import {ExtractFnReturnType, QueryConfig} from '@/lib/react-query';
 
 // Types
-import {TotalStates} from '../types';
+import {GetStateCountReturnType} from '../types';
 
-export const getTotalStates = (): Promise<TotalStates> => {
+export const getStateCount = (): Promise<GetStateCountReturnType> => {
     return axios.get(`/api/states/total`);
 };
 
-type QueryFnType = typeof getTotalStates;
+type QueryFnType = typeof getStateCount;
 
-interface UseTotalStatesOptions {
+interface UseStateCountOptions {
     config?: QueryConfig<QueryFnType>;
 }
 
-export const useTotalStates = ({config}: UseTotalStatesOptions = {}) => {
+export const useStateCount = ({config}: UseStateCountOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
-        queryKey: ['totalStates'],
-        queryFn: () => getTotalStates(),
+        queryKey: ['stateCount'],
+        queryFn: () => getStateCount(),
         ...config,
     });
 };

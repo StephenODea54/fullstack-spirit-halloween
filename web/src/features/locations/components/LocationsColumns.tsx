@@ -1,14 +1,14 @@
 // Module Imports
+import type {ColumnDef} from '@tanstack/react-table';
 import {Text} from '@tremor/react';
 
 // Components
 import {DataTableColumnHeader} from '@/components/ui';
 
 // Types
-import type {ColumnDef} from '@tanstack/react-table';
-import type {Location} from '../types';
+import type {GetLocationCountsReturnType} from '../types';
 
-export const LocationsColumns: ColumnDef<Location>[] = [
+export const LocationsColumns: ColumnDef<GetLocationCountsReturnType>[] = [
     {
         accessorKey: 'formerBusiness',
         header: ({column}) => {

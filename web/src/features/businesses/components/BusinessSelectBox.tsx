@@ -15,7 +15,7 @@ export const BusinessSelectBox = () => {
     return (
         <SearchSelect placeholder='Search for businesses...' value={business} onValueChange={setBusiness}>
             {data &&
-                data.map((business: {id: string; formerBusiness: string}) => (
+                data.map((business: {id: string; formerBusiness: string | undefined}) => (
                     <SearchSelectItem key={business.id} value={business.formerBusiness || ''}>
                         {business.formerBusiness}
                     </SearchSelectItem>

@@ -1,11 +1,11 @@
 // Hooks
-import {useMostFormerBusiness} from '../api';
+import {useBusinessMax} from '../api';
 
 // Components
 import {KPICard} from '@/components/ui';
 
-export const MostFormerBusinessCard = () => {
-    const {data, isLoading, isError} = useMostFormerBusiness();
+export const BusinessMaxCard = () => {
+    const {data, isLoading, isError} = useBusinessMax();
 
     if (isLoading) return <p>Loading...</p>;
 

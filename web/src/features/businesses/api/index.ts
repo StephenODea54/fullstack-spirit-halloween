@@ -1,3 +1,3 @@
 export * from './getBusinesses';
-export * from './getFormerBusinessCounts';
-export * from './getMostFormerBusiness';
+export * from './getBusinessCounts';
+export * from './getBusinessMax';

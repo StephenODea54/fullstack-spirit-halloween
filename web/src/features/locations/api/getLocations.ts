@@ -3,9 +3,9 @@ import {useQuery} from 'react-query';
 import {axios} from '@/lib/axios';
 import {ExtractFnReturnType, QueryConfig} from '@/lib/react-query';
 
-import {Location} from '../types';
+import {GetLocationsReturnType} from '../types';
 
-export const getLocations = (): Promise<Location[]> => {
+export const getLocations = (): Promise<GetLocationsReturnType[]> => {
     return axios.get(`/api/locations`);
 };
 

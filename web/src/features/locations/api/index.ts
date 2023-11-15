@@ -1,2 +1,2 @@
 export * from './getLocations';
-export * from './getTotalLocations';
+export * from './getLocationCount';

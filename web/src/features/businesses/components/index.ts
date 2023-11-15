@@ -1,2 +1,2 @@
-export * from './FormerBusinessBarChart';
-export * from './MostFormerBusinessCard';
+export * from './BusinessBarChart';
+export * from './BusinessMaxCard';

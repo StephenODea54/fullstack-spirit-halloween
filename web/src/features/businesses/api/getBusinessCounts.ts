@@ -6,15 +6,15 @@ import {axios} from '@/lib/axios';
 import {ExtractFnReturnType, QueryConfig} from '@/lib/react-query';
 
 // Types
-import type {TotalFormerBusinesses} from '../types';
+import type {GetBusinessCountsReturnType} from '../types';
 
-export const getFormerBusinessCounts = ({
+export const getBusinessCounts = ({
     limit,
     sort,
 }: {
     limit: number;
     sort: 'ASC' | 'DESC';
-}): Promise<TotalFormerBusinesses[]> => {
+}): Promise<GetBusinessCountsReturnType[]> => {
     return axios.get(`/api/businesses/counts`, {
         params: {
             limit: limit,
@@ -23,18 +23,18 @@ export const getFormerBusinessCounts = ({
     });
 };
 
-type QueryFnType = typeof getFormerBusinessCounts;
+type QueryFnType = typeof getBusinessCounts;
 
-type UseFormerBusinessCountsOptions = {
+type UseBusinessCountsOptions = {
     config?: QueryConfig<QueryFnType>;
     limit: number;
     sort: 'ASC' | 'DESC';
 };
 
-export const useFormerBusinessCounts = ({config = {}, limit, sort}: UseFormerBusinessCountsOptions) => {
+export const useBusinessCounts = ({config = {}, limit, sort}: UseBusinessCountsOptions) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
-        queryKey: ['formerBusinessCounts', limit, sort],
-        queryFn: () => getFormerBusinessCounts({limit, sort}),
+        queryKey: ['businessCounts', limit, sort],
+        queryFn: () => getBusinessCounts({limit, sort}),
         ...config,
     });
 };
