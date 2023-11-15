@@ -2,17 +2,18 @@
 import express from 'express';
 
 // Services Import
-import locationServices from '@/services/locationServices.js';
+import stateServices from '@/services/stateServices.js';
 
 const router = express.Router();
 
 router.get('/', (_req, res) => {
-    const locations = locationServices.getLocations();
-    res.send(locations);
+    const stateNames = stateServices.getStates();
+
+    res.send(stateNames);
 });
 
 router.get('/total', (_req, res) => {
-    const totalLocations = locationServices.getTotalLocations();
+    const totalLocations = stateServices.getStateCounts();
     res.send(totalLocations);
 });
 

@@ -1,22 +1,24 @@
 // Module Imports
-import { like, sql } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 
 // DB Imports
 import { db } from '@/db/db.js';
 import * as schema from '@/db/schema.js';
 
-const getStateNames = (stateName: string): { state: string }[] => {
+// Types
+import { GetStateCountsReturnType, GetStatesReturnType } from '@/types/index.js';
+
+const getStates = (): GetStatesReturnType[] => {
     const results = db
-        .selectDistinct({ state: schema.states.state })
+        .selectDistinct({ id: schema.states.state, state: schema.states.state })
         .from(schema.states)
-        .where(like(schema.states.state, `${stateName}%`))
         .orderBy(schema.states.state)
         .all();
 
     return results;
 };
 
-const getTotalStates = (): { totalStates: number } => {
+const getStateCounts = (): GetStateCountsReturnType => {
     const result = db
         .select({ totalStates: sql<number>`COUNT(*)` })
         .from(schema.states)
@@ -25,6 +27,6 @@ const getTotalStates = (): { totalStates: number } => {
 };
 
 export default {
-    getStateNames,
-    getTotalStates,
+    getStates,
+    getStateCounts,
 };

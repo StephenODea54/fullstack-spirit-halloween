@@ -6,9 +6,9 @@ import { db } from '@/db/db.js';
 import * as schema from '@/db/schema.js';
 
 // Types
-import type { Location } from '@/types/index.js';
+import { GetLocationCountsReturnType, GetLocationsReturnType } from '@/types/index.js';
 
-const getLocations = (): Location[] => {
+const getLocations = (): GetLocationsReturnType[] => {
     const locations = db
         .select({
             id: schema.locations.id,
@@ -31,7 +31,7 @@ const getLocations = (): Location[] => {
     return locations;
 };
 
-const getTotalLocations = (): { totalLocations: number } => {
+const getLocationCounts = (): GetLocationCountsReturnType => {
     const result = db
         .select({ totalLocations: sql<number>`count(*)` })
         .from(schema.locations)
@@ -41,5 +41,5 @@ const getTotalLocations = (): { totalLocations: number } => {
 
 export default {
     getLocations,
-    getTotalLocations,
+    getLocationCounts,
 };

@@ -30,12 +30,6 @@ const checkNotArray = (response: Response): void => {
     expect(Array.isArray(response.body)).toBe(false);
 };
 
-const checkLikeOperator = (response: Response, column: string, param: string): void => {
-    response.body.forEach((response) =>
-        expect(response[column].toLowerCase().substring(0, param.length)).toContain(param),
-    );
-};
-
 // Tests
 describe('Businesses Router Test Suite', () => {
     it('Ensures the /api/businesses/max route exists and is of type object', async () => {
@@ -71,12 +65,11 @@ describe('Businesses Router Test Suite', () => {
         checkLength(response, 20);
     });
 
-    it('Ensures the /api/businesses?businessName route exists and performs the proper filtering', async () => {
-        const response = await request(app).get('/api/businesses?businessName=bed');
+    it('Ensures the /api/businesses', async () => {
+        const response = await request(app).get('/api/businesses');
 
         check200StatusCode(response);
         checkJsonResponse(response);
-        checkLikeOperator(response, 'formerBusiness', 'bed');
     });
 });
 
@@ -89,12 +82,11 @@ describe('State Router Test Suite', () => {
         checkNotArray(response);
     });
 
-    it('Ensures the /api/states?stateName route exists and performs the proper filtering', async () => {
-        const response = await request(app).get('/api/states?stateName=o');
+    it('Ensures the /api/states route exists', async () => {
+        const response = await request(app).get('/api/states');
 
         check200StatusCode(response);
         checkJsonResponse(response);
-        checkLikeOperator(response, 'state', 'o');
     });
 });
 

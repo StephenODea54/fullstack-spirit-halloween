@@ -1,25 +1,34 @@
 // Module Imports
-import { asc, desc, eq, like, sql } from 'drizzle-orm';
+import { asc, desc, eq, sql } from 'drizzle-orm';
 
 // DB Imports
 import { db } from '@/db/db.js';
 import * as schema from '@/db/schema.js';
 
 // Types
-import type { FormerBusiness } from '@/types/index.js';
+import type {
+    GetBusinessCountsReturnType,
+    GetBusinessMaxReturnType,
+    GetBusinessReturnType,
+} from '@/types/index.js';
 
-const getBusinessNames = (businessName: string): { formerBusiness: string }[] => {
+const getBusinesses = (): GetBusinessReturnType[] => {
     const results = db
-        .selectDistinct({ formerBusiness: schema.formerBusinesses.formerBusiness })
+        .selectDistinct({
+            id: schema.formerBusinesses.id,
+            formerBusiness: schema.formerBusinesses.formerBusiness,
+        })
         .from(schema.formerBusinesses)
-        .where(like(schema.formerBusinesses.formerBusiness, `${businessName}%`))
         .orderBy(schema.formerBusinesses.formerBusiness)
         .all();
 
     return results;
 };
 
-const getFormerBusinessCounts = (sort: 'ASC' | 'DESC' = 'DESC', limit: number = 10): FormerBusiness[] => {
+const getBusinessCounts = (
+    sort: 'ASC' | 'DESC' = 'DESC',
+    limit: number = 10,
+): GetBusinessCountsReturnType[] => {
     const results = db
         .select({
             id: schema.formerBusinesses.id,
@@ -43,7 +52,7 @@ const getFormerBusinessCounts = (sort: 'ASC' | 'DESC' = 'DESC', limit: number = 
     return results;
 };
 
-const getHighestFormerBusiness = (): { formerBusiness: string; totalLocations: number } => {
+const getBusinessMax = (): GetBusinessMaxReturnType => {
     const result = db
         .select({
             formerBusiness: schema.formerBusinesses.formerBusiness,
@@ -63,7 +72,7 @@ const getHighestFormerBusiness = (): { formerBusiness: string; totalLocations: n
 };
 
 export default {
-    getBusinessNames,
-    getFormerBusinessCounts,
-    getHighestFormerBusiness,
+    getBusinesses,
+    getBusinessCounts,
+    getBusinessMax,
 };

@@ -6,9 +6,9 @@ import express from 'express';
 import { requestLogger } from '@/logging/index.js';
 
 // Router Imports
-import businessRouter from '@/routes/businesses.js';
-import locationRouter from '@/routes/locations.js';
-import stateRouter from '@/routes/states.js';
+import businessRouter from '@/routes/businessRoutes.js';
+import locationRouter from '@/routes/locationRoutes.js';
+import stateRouter from '@/routes/stateRoutes.js';
 
 export const app = express();
 
