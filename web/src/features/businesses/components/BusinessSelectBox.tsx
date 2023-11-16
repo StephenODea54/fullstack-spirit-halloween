@@ -22,7 +22,7 @@ export const BusinessSelectBox = <TData,>({ table }: BusinessSelectBoxProps<TDat
                 value={(table.getColumn('formerBusiness')?.getFilterValue() as string) || ''}
                 onValueChange={value => table.getColumn('formerBusiness')?.setFilterValue(value)}>
                 {data &&
-                    data.map((business: { id: string; formerBusiness: string | undefined }) => (
+                    data.map(business => (
                         <SearchSelectItem key={business.id} value={business.formerBusiness || ''}>
                             {business.formerBusiness}
                         </SearchSelectItem>

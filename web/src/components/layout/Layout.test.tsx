@@ -12,11 +12,7 @@ describe('<Layout />', () => {
 
     it('Layout component should render successfully', () => {
         expect(() => {
-            render(
-                <Layout>
-                    Hello, World!
-                </Layout>
-            );
+            render(<Layout>Hello, World!</Layout>);
         }).not.toThrow();
     });
 });

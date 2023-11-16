@@ -2,8 +2,7 @@
 import { useQuery } from 'react-query';
 
 // Utils
-import { axios } from '@/lib/axios';
-import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
+import { axios, type ExtractFnReturnType, type QueryConfig } from '@/lib';
 
 // Types
 import type { GetBusinessResponseType } from '../types';

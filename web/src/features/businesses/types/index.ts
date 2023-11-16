@@ -1,4 +1,5 @@
 export interface GetBusinessResponseType {
+    id: string;
     formerBusiness: string;
 }
 
