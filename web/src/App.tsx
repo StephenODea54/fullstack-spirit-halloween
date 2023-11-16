@@ -2,7 +2,7 @@
 import { AppProvider } from '@/providers';
 
 // Head
-import { Head } from '@/components/Head';
+import { Head } from '@/components/head';
 
 // Layout
 import { Layout } from '@/components/layout';

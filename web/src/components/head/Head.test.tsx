@@ -4,7 +4,7 @@ import { cleanup, render, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 
 // Component
-import { Head } from '../Head';
+import { Head } from './Head';
 
 // Constants
 const TITLE = 'This is a title';
