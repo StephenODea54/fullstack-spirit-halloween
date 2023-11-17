@@ -12,9 +12,4 @@ router.get('/', (_req, res) => {
     res.send(stateNames);
 });
 
-router.get('/total', (_req, res) => {
-    const totalLocations = stateServices.getStateCounts();
-    res.send(totalLocations);
-});
-
 export default router;

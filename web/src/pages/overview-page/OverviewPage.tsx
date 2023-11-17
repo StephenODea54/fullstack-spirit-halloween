@@ -24,7 +24,6 @@ export const OverviewPage = () => {
         <>
             <Grid numItems={1} numItemsMd={3} className='gap-6 mt-6'>
                 <LocationCountCard />
-                <StateCountCard />
                 <BusinessMaxCard />
             </Grid>
             <Card className='mt-6'>

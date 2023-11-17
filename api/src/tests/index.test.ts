@@ -74,14 +74,6 @@ describe('Businesses Router Test Suite', () => {
 });
 
 describe('State Router Test Suite', () => {
-    it('Ensures the /api/states/total route exists and is of type object', async () => {
-        const response = await request(app).get('/api/states/total');
-
-        check200StatusCode(response);
-        checkJsonResponse(response);
-        checkNotArray(response);
-    });
-
     it('Ensures the /api/states route exists', async () => {
         const response = await request(app).get('/api/states');
 
