@@ -81,7 +81,7 @@ def insert_data(df: pd.DataFrame, table_name: str, engine: Engine) -> None:
 
 
 if __name__ == "__main__":
-    engine = create_engine("sqlite:///api/database.db")
+    engine = create_engine("sqlite:///api/data/database.db")
     create_tables(engine)
 
     cities_df = read_output_data("cities")
