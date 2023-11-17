@@ -141,12 +141,13 @@ This project is broken down into three main parts:
        - `logging`: Simple logging middleware for Express.
        - `routes`: Defines all of the api endpoints, which are:
            - `api/businesses`: returns a list of all of the business names.
-           - `api/businesses/counts`: returns a list of businesses and how many Spirit Halloween locations they had.
+           - `api/businesses/counts`: returns a list of businesses and how many Spirit Halloween locations they had. Takes two optional query parameters:
+                - `sort`: Use this to return the results in ascending or descending order. Valid values are `ASC` and `DESC`. Defaults to `DESC`.
+                - `limit`: Controls how many results are returned. Defaults to 10.
            - `api/businesses/max`: returns the business with the highest amount of locations.
            - `api/locations`: returns a list of all the address information for the different business locations.
            - `api/locations/total`: returns the total amount of locations.
            - `api/states`: returns a list of the states.
-           - `api/states/total`: returns the total amount of states.
        - `services`: Defines functions for retrieving the data from the database for use in the router.
        - `tests`: Unit tests using Jest.
        - `types`: TypeScript type used throught the application.
@@ -170,7 +171,9 @@ This project is broken down into three main parts:
 ## Roadmap
 
 - [ ] Add Frontend Dockerfile
+- [ ] Fix data persistency in Dockerfile for Backend
 - [ ] Add docker-compose
+- [ ] Add docker install for local setup (since we do not need it for production purposes)
 
 See the [open issues](https://github.com/StephenODea54/fullstack-spirit-halloween/issues) for a full list of proposed features (and known issues).
 
