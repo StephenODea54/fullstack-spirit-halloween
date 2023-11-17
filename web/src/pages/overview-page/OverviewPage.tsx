@@ -5,7 +5,6 @@ import { BarsArrowDownIcon, BarsArrowUpIcon } from '@heroicons/react/24/outline'
 // Features
 import { BusinessBarChart, BusinessMaxCard } from '@/features/businesses';
 import { LocationCountCard } from '@/features/locations';
-import { StateCountCard } from '@/features/states';
 
 // Components
 import { Card, Flex, Grid, Select, SelectItem, Tab, TabGroup, TabList, Text, Title } from '@tremor/react';
