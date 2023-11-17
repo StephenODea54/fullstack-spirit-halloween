@@ -4,6 +4,9 @@ FROM node:lts
 # Set Working Directory
 WORKDIR /app
 
+# Install sqlite3
+RUN apt-get install -y sqlite3
+
 # Install pnpm
 RUN apt-get update
 RUN npm install -g pnpm
